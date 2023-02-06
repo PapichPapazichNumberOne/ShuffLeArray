@@ -2,41 +2,27 @@ import java.util.Random;
 
 public class ShuffleArray {
     public static void main(String[] args) {
-        int[] sortedArray = {1,2,1,1};
-        while (hasAllSameNumbers(sortedArray)) {
-            System.out.println("Ты че дебил,нормальные цифры напиши.");
-            return;
-        }
-        do {
+        int[] sortedArray = {1, 2, 3, 4, 6, 4, 5, 1, 9, 10};
+        boolean hasAllDifferentNumbers = true;//Если почитать можно пишем false,если нельзя true//
+
+
+        while (!hasAllDifferentNumbers) {
             unsortedArray(sortedArray);
+
+            for (int i = 0; i < sortedArray.length; i++) {
+                System.out.print(sortedArray[i] + " ");
+            }
+            System.out.println("");
+
+            hasAllDifferentNumbers = true;
 
             for (int i = 0; i < sortedArray.length - 1; i++) {
                 if (sortedArray[i] == sortedArray[i + 1]) {
-                    continue;
+                    hasAllDifferentNumbers = false;
+                    break;
                 }
-                System.out.print(sortedArray[i] + " ");
-            }
-            System.out.println(sortedArray[sortedArray.length - 1]);
-
-        } while (hasRepeatedNumbers(sortedArray));
-    }
-
-    private static boolean hasAllSameNumbers(int[] sortedArray) {
-        for (int i = 1; i < sortedArray.length; i++) {
-            if (sortedArray[i] != sortedArray[0]) {
-                return false;
             }
         }
-        return true;
-    }
-
-    private static boolean hasRepeatedNumbers(int[] sortedArray) {
-        for (int i = 0; i < sortedArray.length - 1; i++) {
-            if (sortedArray[i] == sortedArray[i + 1]) {
-                return true;
-            }
-        }
-        return false;
     }
 
     public static void unsortedArray(int[] sortedArray) {
